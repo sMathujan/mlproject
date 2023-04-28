@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+from src.pipeline.train_pipeline import TrainPipeline
 
 
 application = Flask(__name__)
@@ -13,6 +14,17 @@ app = application
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/train', methods=['GET', 'POST'])
+def train():
+    if request.method == 'GET':
+        return render_template('train.html')
+    else:
+        obj = TrainPipeline()
+        results = obj.train()
+        print(results)
+        return render_template('train.html', results=results)
 
 
 @app.route('/predictdata', methods=['GET', 'POST'])

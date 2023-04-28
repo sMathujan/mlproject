@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Training Pipeline</title>
+</head>
+<body>
+    <form action="{{url_for('train')}}" method="POST">
+        <button type="submit">Call Train Pipeline</button>
+    </form> 
+    <h1>Training Pipeline Called Successfully</h1>
+    <p>Best Model r2_score:  {{results}}</p>
+</body>
+</html>
